@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTT PLATFORM ANALYSIS</title>
+    <style>
+        /* Global Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+            background: #1e3c72; /* Fallback background */
+        }
+
+        /* Background image container */
+        .background-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://w.wallhaven.cc/full/42/wallhaven-42roy9.jpg'); /* Your background image */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            z-index: 1;
+            animation: fadeOutBackground 1s ease-in-out 2s forwards; /* Fade out after 2 seconds */
+        }
+
+        /* Dark overlay for the toolbar */
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6); /* Dark overlay */
+            z-index: 2;
+            opacity: 0; /* Start with 0 opacity */
+            animation: fadeInOverlay 1s ease-in-out 2s forwards; /* Fade in after 2 seconds */
+        }
+
+        /* Container Styles */
+        .container {
+            width: 90%;
+            max-width: 700px;
+            background: rgba(255, 255, 255, 0.2); /* Semi-transparent background */
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            opacity: 0; /* Start with 0 opacity */
+            animation: fadeInContainer 1s ease-in-out 2s forwards; /* Fade in after 2 seconds */
+            z-index: 3;
+        }
+
+        /* Header Styles */
+        .header h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: #ff9f43; /* Vibrant orange */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .header h3 {
+            text-align: right;
+            font-size: 1.2rem;
+            color: #ff6b6b; /* Vibrant red */
+            margin-right: 20px;
+        }
+
+        /* Form Container Styles */
+        .form-container {
+            margin-top: 20px;
+        }
+
+        .form-container label {
+            display: block;
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #ff9f43; /* Vibrant orange */
+            margin-bottom: 5px;
+        }
+
+        .form-container input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.3); /* Semi-transparent input background */
+            color: #fff;
+            font-size: 1rem;
+            outline: none;
+            transition: background 0.3s ease;
+        }
+
+        .form-container input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .form-container input:focus {
+            background: rgba(255, 255, 255, 0.4); /* Brighter on focus */
+        }
+
+        /* Button Styles */
+        .btn {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .btn input {
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #ff9f43, #ff6b6b); /* Gradient button */
+            border: none;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+        }
+
+        .btn input:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.6);
+        }
+
+        .btn input:active {
+            transform: translateY(0);
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+        }
+
+        /* Animations */
+        @keyframes fadeOutBackground {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
+
+        @keyframes fadeInOverlay {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInContainer {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background image -->
+    <div class="background-image"></div>
+
+    <!-- Dark overlay -->
+    <div class="overlay"></div>
+
+    <!-- Toolbar container -->
+    <div class="container">
+        <div class="header">
+            <h1>HELLO! LET ME FIND SOME ENTERTAINMENT</h1>
+            <h3>-ABHIMANYU</h3>
+        </div>
+        <div class="form-container">
+            <form method="POST" action="{{url_for('home')}}">
+                <label>ENTER MOVIE GENRE</label>
+                <input type="text" name="a" placeholder="Genre like Action, Drama, etc" required>
+
+                <label>Enter Threshold Ratings</label>
+                <input type="number" name="b" placeholder="Min no. of ratings" min="0" required>
+
+                <label>Enter Minimum Rating</label>
+                <input type="number" name="c" placeholder="Minimum rating" min="0" max="10" step="0.1" required>
+
+                <label>Enter No. of Movies You Want</label>
+                <input type="number" name="d" placeholder="No. of movies you want" min="1" required>
+
+                <div class="btn">
+                    <input type="submit" value="DISCOVER">
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
